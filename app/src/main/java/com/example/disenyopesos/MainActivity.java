@@ -1,6 +1,7 @@
 package com.example.disenyopesos;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -15,9 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.os.Handler;
-
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,47 +29,46 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        /*ImageButton btnAsyncTask = findViewById(R.id.btnAsyncTask);
-        btnAsyncTask.setOnClickListener(){
-                @Override
-                public void onClick(View v){
-                    Intent intent = new Intent(getApplicationContext(), EjemploAsynctask.class);
-                    startActivity(intent);
-        }
-        });*/
+
+        ImageButton btnAsynctask = findViewById(R.id.btnAsynctask);
+        btnAsynctask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                //PARA CAMBIAR DE ACTIVITY SI O SI UN INTENT
+                Intent intent = new Intent(getApplicationContext(), EjemploAsynctask.class);
+                startActivity(intent);
+            }
+        });
+
         ImageButton btnToast = findViewById(R.id.btnToast);
         btnToast.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                //Toast.makeText(getApplicationContext(), "DAM2", Toast.LENGTH_SHORT).show();
                 View vista = getLayoutInflater().inflate(R.layout.toast_per, null);
                 ImageView ivToast = vista.findViewById(R.id.ivToast);
                 ivToast.setImageResource(R.drawable.andando1);
                 TextView tvToast = vista.findViewById(R.id.tvToast);
-                tvToast.setText("DAM ---- 2");
+                tvToast.setText(("DAM----2"));
+
                 final Dialog dialogo = new Dialog(MainActivity.this);
                 dialogo.setContentView(vista);
                 if(dialogo.getWindow() != null)
                 {
                     dialogo.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
                 }
                 dialogo.show();
-                ivToast.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialogo.dismiss();
-                    }
-                });
-                /*new Handler(Looper.getMainLooper()).postDelayed(new Runnable()
+
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable()
                 {
                     @Override
-                    public void run(){
-                        dialogo.dismiss();
-
+                    public void run() {
+                        dialogo.dismiss(); //Cierro dialogo
                     }
-                }, 2000);*/
+                },2000);
             }
         });
     }
