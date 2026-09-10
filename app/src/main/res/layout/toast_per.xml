@@ -7,10 +7,10 @@
 
 
     <ImageView
+        android:id="@+id/ivToast"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/ivToast"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="match_parent"
